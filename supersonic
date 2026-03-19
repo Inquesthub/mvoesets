@@ -1,0 +1,47 @@
+-- keybinds: T R G H V J
+
+local UIS = game:GetService("UserInputService")
+local RS = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+local Actions = {
+
+    T = function()
+        local args = {
+            Players:WaitForChild("fleeburneracc"),
+            workspace:WaitForChild("Test Dummy")
+        }
+        RS:WaitForChild("Characters"):WaitForChild("Homelander"):WaitForChild("Remotes"):WaitForChild("EagleStrike"):FireServer(unpack(args))
+    end,
+
+    R = function()
+        RS:WaitForChild("Characters"):WaitForChild("Gigachad"):WaitForChild("Remotes"):WaitForChild("Barrage"):FireServer()
+    end,
+
+    G = function()
+        local args = {
+            Players:WaitForChild("fleeburneracc")
+        }
+        RS:WaitForChild("Characters"):WaitForChild("Sonic"):WaitForChild("Remotes"):WaitForChild("Counter"):FireServer(unpack(args))
+    end,
+
+    H = function()
+        RS:WaitForChild("Characters"):WaitForChild("Sonic"):WaitForChild("Remotes"):WaitForChild("SonicBoom"):FireServer()
+    end,
+
+    V = function()
+        Players.LocalPlayer.Character.SonicMovie.Chilidog:FireServer()
+    end,
+
+    J = function()
+        RS:WaitForChild("Characters"):WaitForChild("Sonic"):WaitForChild("Remotes"):WaitForChild("Transform"):FireServer()
+    end,
+}
+
+UIS.InputBegan:Connect(function(input, gpe)
+    if gpe then return end
+    local action = Actions[input.KeyCode.Name]
+    if action then
+        action()
+    end
+end)
